@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.Build.NoTargets">
 
 	<PropertyGroup>
-		<TargetFrameworks>net8.0;net9.0</TargetFrameworks>
+		<TargetFrameworks>net10.0</TargetFrameworks>
 
 		<BaseDirectory Condition="'$(SolutionDir)'==''">./</BaseDirectory>
 		<BaseDirectory Condition="'$(SolutionDir)'!=''">$(SolutionDir)</BaseDirectory>
