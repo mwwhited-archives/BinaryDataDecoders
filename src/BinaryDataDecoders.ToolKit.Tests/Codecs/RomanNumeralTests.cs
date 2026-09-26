@@ -25,7 +25,7 @@ public class RomanNumeralTests
     [DataRow(2000, "MM")]
     [DataRow(2023, "MMXXIII")]
     [DataRow(1234567, "/M/C/C/X/X/XM/VDLXVII")]
-    [TestMethod, TestCategory(TestCategories.Unit)]
+    [TestCategory(TestCategories.Unit)]
     public void Convert_ToRomanNumeralTest(int value, string expected) =>
         Assert.AreEqual(expected, new RomanNumeral().Convert(value));
 
@@ -45,7 +45,7 @@ public class RomanNumeralTests
     [DataRow("MM", 2000)]
     [DataRow("MMXXIII", 2023)]
     [DataRow("/M/C/C/X/X/XM/VDLXVII", 1234567)]
-    [TestMethod, TestCategory(TestCategories.Unit)]
+    [TestCategory(TestCategories.Unit)]
     public void Convert_ToNumberTest(string value, int expected) =>
         Assert.AreEqual(expected, new RomanNumeral().Convert(value));
 }

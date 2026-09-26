@@ -2,7 +2,7 @@
 	<!--https://github.com/microsoft/MSBuildSdks/blob/main/src/NoTargets/README.md-->
 
 	<PropertyGroup>
-		<TargetFrameworks>net8.0;net9.0</TargetFrameworks>
+		<TargetFrameworks>net10.0</TargetFrameworks>
 		<GenerateDocumentationFile>false</GenerateDocumentationFile>
 		<IsPackable>false</IsPackable>
 		<IsTestProject>false</IsTestProject>
@@ -42,7 +42,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Update="GitVersion.MsBuild" Version="6.1.0">
+	  <PackageReference Update="GitVersion.MsBuild" Version="6.8.2">
 	    <PrivateAssets>all</PrivateAssets>
 	    <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
 	  </PackageReference>

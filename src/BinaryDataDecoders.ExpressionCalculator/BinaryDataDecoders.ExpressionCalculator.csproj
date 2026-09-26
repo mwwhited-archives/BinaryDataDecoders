@@ -3,7 +3,7 @@
 
 
 	<PropertyGroup>
-		<TargetFrameworks>net8.0;net9.0</TargetFrameworks>
+		<TargetFrameworks>net10.0</TargetFrameworks>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<Nullable>enable</Nullable>
@@ -23,11 +23,11 @@
 
 	<ItemGroup>
 		<PackageReference Include="Antlr4.Runtime.Standard" Version="4.13.1" />
-		<PackageReference Include="Antlr4BuildTasks" Version="12.8.0" />
+		<PackageReference Include="Antlr4BuildTasks" Version="12.14.0" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Update="GitVersion.MsBuild" Version="6.1.0">
+	  <PackageReference Update="GitVersion.MsBuild" Version="6.8.2">
 	    <PrivateAssets>all</PrivateAssets>
 	    <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
 	  </PackageReference>

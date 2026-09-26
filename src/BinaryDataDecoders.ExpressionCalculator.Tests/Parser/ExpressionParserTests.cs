@@ -120,7 +120,6 @@ public abstract class ExpressionParserTests<T>
 
 
     [DataTestMethod, TestCategory(TestCategories.Unit)]
-    [ExpectedException(typeof(ParseCanceledException))]
     [DataRow("-A!")]
     [DataRow("B/*1")]
     [DataRow("B**")]
@@ -135,18 +134,10 @@ public abstract class ExpressionParserTests<T>
     //TODO: this should throw a parse error !!![DataRow("1e")]
     public void PoorlyFormedExpressions(string input)
     {
-        try
-        {
-            TestContext.WriteLine($"Input: {input}");
-            var parsed = new ExpressionParser<T>().Parse(input);
-            Assert.Fail("You shouldn't get here!");
-        }
-        catch (Exception ex)
-        {
-            this.TestContext.WriteLine(ex.Message);
-            this.TestContext.WriteLine(ex.GetType().ToString());
-            throw;
-        }
+        TestContext.WriteLine($"Input: {input}");
+        var ex = Assert.ThrowsExactly<ParseCanceledException>(() => new ExpressionParser<T>().Parse(input));
+        TestContext.WriteLine(ex.Message);
+        TestContext.WriteLine(ex.GetType().ToString());
     }
 
     [DataTestMethod, TestCategory(TestCategories.Unit)]
@@ -249,16 +240,17 @@ public abstract class ExpressionParserTests<T>
     [DataTestMethod, TestCategory(TestCategories.Unit)]
     [DataRow("B/0")]
     [DataRow("B%0")]
-    [ExpectedException(typeof(DivideByZeroException))]
     [TestTarget(typeof(ExpressionBaseExtensions), Member = nameof(ExpressionBaseExtensions.Optimize))]
     public void OptimizerTests_WithExceptions(string input)
     {
-        TestContext.WriteLine($"Input: {input}");
-        var parsed = new ExpressionParser<T>().Parse(input);
-        TestContext.WriteLine($"As Parsed: {parsed}");
-        var optimized = parsed.Optimize();
-        TestContext.WriteLine($"As Optimized: {optimized}");
-        Assert.Fail("You shouldn't get here");
+        Assert.ThrowsExactly<DivideByZeroException>(() =>
+        {
+            TestContext.WriteLine($"Input: {input}");
+            var parsed = new ExpressionParser<T>().Parse(input);
+            TestContext.WriteLine($"As Parsed: {parsed}");
+            var optimized = parsed.Optimize();
+            TestContext.WriteLine($"As Optimized: {optimized}");
+        });
     }
 
     [DataTestMethod, TestCategory(TestCategories.Unit)]

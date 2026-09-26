@@ -13,7 +13,7 @@ public class CaesarTests
     [DataRow("Hello, World", 'H', "Olssv, Dvysk")]
     [DataRow("hello, world", 'h', "olssv, dvysk")]
     [DataRow("hello world", 'C', "jgnnq yqtnf")]
-    [TestMethod, TestCategory(TestCategories.Unit)]
+    [TestCategory(TestCategories.Unit)]
     public void EncodeTest(string message, char key, string expected)
     {
         var result = new Caesar().Encode(message, key);
@@ -26,7 +26,7 @@ public class CaesarTests
     [DataRow("Olssv, Dvysk", 'H', "Hello, World")]
     [DataRow("olssv, dvysk", 'h', "hello, world")]
     [DataRow("jgnnq yqtnf", 'C', "hello world")]
-    [TestMethod, TestCategory(TestCategories.Unit)]
+    [TestCategory(TestCategories.Unit)]
     public void DecodeTest(string message, char key, string expected)
     {
         var result = new Caesar().Decode(message, key);
