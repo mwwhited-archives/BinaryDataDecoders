@@ -29,7 +29,7 @@ public static partial class ReadOnlySpanEx
     {
         var size = Marshal.SizeOf<TOut>();
         var data = new byte[size * input.Length];
-        Span<TOut> target = MemoryMarshal.Cast<byte, TOut>(data);
+        Span<TOut> target = MemoryMarshal.Cast<byte, TOut>(data.AsSpan());
         CopyToWithTransform(input, target, transform);
         return target;
     }

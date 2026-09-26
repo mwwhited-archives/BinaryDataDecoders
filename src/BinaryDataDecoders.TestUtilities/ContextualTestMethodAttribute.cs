@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace BinaryDataDecoders.TestUtilities;
 
@@ -28,10 +29,10 @@ public class ContextualTestMethodAttribute : TestMethodAttribute
     {
     }
 
-    public override TestResult[] Execute(ITestMethod testMethod)
+    public override async Task<TestResult[]> ExecuteAsync(ITestMethod testMethod)
     {
         _current.Value = testMethod;
-        var ret = base.Execute(testMethod);
+        var ret = await base.ExecuteAsync(testMethod);
         _current.Value = null;
         return ret;
     }

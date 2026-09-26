@@ -49,19 +49,17 @@ public class VariableExpressionTests
         Assert.IsFalse(var1.Equals(var2));
     }
 
-    [TestMethod, TestCategory(TestCategories.Unit), ExpectedException(typeof(InvalidOperationException))]
+    [TestMethod, TestCategory(TestCategories.Unit)]
     [TestTarget(typeof(VariableExpression<>))]
     public void NullVariableName_Test()
     {
-       _ = new VariableExpression<double>(null);
-        Assert.Fail("you should not get here!");
+        Assert.ThrowsExactly<InvalidOperationException>(() => new VariableExpression<double>(null));
     }
 
-    [TestMethod, TestCategory(TestCategories.Unit), ExpectedException(typeof(InvalidOperationException))]
+    [TestMethod, TestCategory(TestCategories.Unit)]
     [TestTarget(typeof(VariableExpression<>))]
     public void EmptyVariableName_Test()
     {
-        _= new VariableExpression<double>("");
-        Assert.Fail("you should not get here!");
+        Assert.ThrowsExactly<InvalidOperationException>(() => new VariableExpression<double>(""));
     }
 }
